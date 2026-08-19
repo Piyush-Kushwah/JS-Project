@@ -3,29 +3,32 @@ const fullnameInput = document.querySelector("#fullname");
 const emailInput = document.querySelector("#email");
 const passwordInput = document.querySelector("#password");
 
-registerForm.addEventListener("submit", async (e)=>{
-    e.preventDefault(); // --> stops browser's default behaviour
-    console.log("Form Submitted");  
+registerForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    console.log("Form Submitted");
 
     const newUser = {
         fullname: fullnameInput.value,
-        email : emailInput.value.toLowerCase(),
-        password : passwordInput.value,
+        email: emailInput.value.toLowerCase(),
+        password: passwordInput.value,
     };
 
     console.log(newUser);
 
-    //! Send NewUser To Database
-    await fetch("https://js-project-2-mite.onrender.com/users" , {
-        method : "POST",
-        body : JSON.stringify(newUser),
-        headers : {
-            "content-type" : "application/json"
-        }
-    })
+    try {
+        await fetch("https://js-project-backend-x68z.onrender.com/users", {
+            method: "POST",
+            body: JSON.stringify(newUser),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
 
-    //! Navigate To All User Page
-    window.location.href = "AllUsers.html"
-    
+        window.location.href = "AllUsers.html";
+
+    } catch (error) {
+        console.log(error);
+        alert("Error creating user");
+    }
 });
-

@@ -2,23 +2,32 @@ const editform = document.querySelector("#edit-form");
 const fullnameInput = document.querySelector("#fullname");
 const emailInput = document.querySelector("#email");
 const passwordInput = document.querySelector("#password");
+
 let params = new URLSearchParams(window.location.search);
 let id = params.get("id");
 
-async function getEditUser(){
-   
-    let resp = await fetch(`https://js-project-2-mite.onrender.com/users/${id}`);
-    let data = await resp.json();
-    console.log(data);
+async function getEditUser() {
+    try {
+        let resp = await fetch(
+            `https://js-project-backend-x68z.onrender.com/users/${id}`
+        );
 
-    fullnameInput.value = data.fullname;
-    emailInput.value = data.email;
-    passwordInput.value = data.password;
+        let data = await resp.json();
+
+        console.log(data);
+
+        fullnameInput.value = data.fullname;
+        emailInput.value = data.email;
+        passwordInput.value = data.password;
+
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 getEditUser();
 
-editform.addEventListener("submit", async  (e) => {
+editform.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     let updateData = {
@@ -27,14 +36,22 @@ editform.addEventListener("submit", async  (e) => {
         password: passwordInput.value,
     };
 
-    await fetch(`http://localhost:5000.users/${id}`,{
-        method: "put",
-        body: JSON.stringify(updateData),
-        headers: {
-            "content-type" : "application/json"
-        },
+    try {
+        await fetch(
+            `https://js-project-backend-x68z.onrender.com/users/${id}`,
+            {
+                method: "PUT",
+                body: JSON.stringify(updateData),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }
+        );
 
-    });
-    
-    window.location.href = "AllUsers.html"
-})
+        window.location.href = "AllUsers.html";
+
+    } catch (error) {
+        console.log(error);
+        alert("Error updating user");
+    }
+});
