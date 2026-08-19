@@ -13,10 +13,10 @@ const port = process.env.PORT || 5000;
 // Enable CORS
 server.use(
   cors({
-    origin: "https://js-project-seven-mauve.vercel.app/",
+    origin: "https://js-project-six-nu.vercel.app",
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
-  }),
+  })
 );
 
 server.use(jsonServer.bodyParser);
