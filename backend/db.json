@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "fullname": "Piyush Kushwah",
+      "email": "piyush.01kushwah@gmail.com",
+      "password": "piyush001",
+      "id": 1
+    },
+    {
+      "fullname": "Rohit Kumar ",
+      "email": "rohit.01kushwah@gmail.com",
+      "password": "1234532323",
+      "id": 2
+    }
+  ]
+}

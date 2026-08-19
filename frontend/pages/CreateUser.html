@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../index.css">
+  <script src="../scripts/createUser.js" defer></script>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <figure class="logo">
+      CURD-APP
+    </figure>
+
+    <nav class="navlinks">
+      <a href="../index.html">Home</a>
+      <a href="./CreateUser.html">Create Usre</a>
+      <a href="./AllUsers.html">All User</a>
+    </nav>
+  </header>
+
+  <!-- MAIN SECTIaON -->
+  <main class="main-container">
+    <h1>Create User</h1>
+  </main>
+
+  <form id="register-form" class="form">
+    <label for="text" name="fullname">FullName</label>
+    <input type="text" name="fullname" id="fullname" placeholder="Jhone Doe" required>
+    <br>
+
+    <label for="email" class="">email</label>
+    <input type="email" name="email" id="email" placeholder="jhone@example.com" required>
+    <br>
+
+    <label for="password">password</label>
+    <input type="password" name="password" id="password" placeholder="********" minlength="6" required>
+    <br>
+
+    <button>Create</button>
+    
+  </form>
+
+</body>
+
+</html>
